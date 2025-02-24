@@ -1,0 +1,10 @@
+<odoo>
+    <!-- Root Menu -->
+    <menuitem id="menu_contact_root" name="Contact">
+    <!-- Sub Menu (Parent of Properties) -->
+        <menuitem id="menu_contact_management" name="Contact Management">
+    <!-- Action Menu (Linked to estate.property) -->
+            <menuitem id="menu_contact_approval" name="Contact Approval" action="action_contact_approval"/>
+        </menuitem>
+    </menuitem>
+</odoo>

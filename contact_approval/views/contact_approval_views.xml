@@ -1,0 +1,42 @@
+<odoo>
+    <record id="contact_approval_search_view" model="ir.ui.view">
+        <field name="name">contact.approval.view.search</field>
+        <field name="model">contact.approval</field>
+        <field name="arch" type="xml">
+            <search>
+<!--                <field name="name"/>-->
+<!--                <group string="Group By">-->
+<!--                    <filter name="group_by_postcode" string="Postcode" context="{'group_by':'postcode'}"/>-->
+<!--                </group>-->
+            </search>
+        </field>
+    </record>
+
+    <record id="contact_approval_form_view" model="ir.ui.view">
+        <field name="name">contact.approval.view.form</field>
+        <field name="model">contact.approval</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button type="object" name="action_approve" string="Approve" class="btn btn-success mr-3"/>
+                    <button type="object" name="action_cancel" string="Cancel" class="btn btn-danger ml-3"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+<!--                            <field name="name"/>-->
+                        </h1>
+                    </div>
+                    <group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_contact_approval" model="ir.actions.act_window">
+        <field name="name">Contact</field>
+        <field name="res_model">contact.approval</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+</odoo>

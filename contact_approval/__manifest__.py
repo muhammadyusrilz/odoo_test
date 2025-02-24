@@ -19,7 +19,7 @@ Long description of module's purpose
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base'],
+    'depends': ['base','sale','purchase'],
 
     # always loaded
     'data': [
@@ -27,9 +27,7 @@ Long description of module's purpose
         'security/res_groups.xml',
         'security/ir.model.access.csv',
         # view
-        'views/contact_approval_type_views.xml',
         'views/contact_approval_views.xml',
-        'views/contact_menu.xml',
         # 'views/views.xml',
         # 'views/templates.xml',
     ],

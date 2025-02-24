@@ -1,34 +1,31 @@
-from odoo import models, fields, _
-from odoo.exceptions import UserError
+from odoo import models, fields
 
 
 class ContactApproval(models.Model):
-    _name = "contact.approval"
-    _description = "Contact Approval Property"
+    _inherit = 'res.partner'
 
     state = fields.Selection(
         [
-            ("draft", "Draft"),
-            ("approve", "Approve"),
-            ("cancel", "Cancel")
+            ('draft', 'Draft'),
+            ('approve', 'Approve'),
+            ('cancel', 'Cancel')
         ],
-        string="State",
-        default="draft"
+        default= 'draft',
+        string='State'
     )
 
     approver_id = fields.Many2one('res.users', string='Approved By')
 
 #========================== Function====================================
-
     def action_approve(self):
         for rec in self:
-            if rec.state == "approve":
-                raise UserError(_("Propery set as sold, can't be cancelled"))
-            rec.state = "sold"
-
+            rec.state = "approve"
+            rec.approver_id= self.env.user
 
     def action_cancel(self):
         for rec in self:
-            if rec.state == "cancel":
-                raise UserError(_("Property set as cancel, can't be sold"))
             rec.state = "cancel"
+
+    def action_reset(self):
+        for rec in self:
+            rec.state= "draft"

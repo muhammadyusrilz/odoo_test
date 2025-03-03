@@ -16,7 +16,7 @@ class ProductTemplate(models.Model):
    def action_view_reserved_orders(self):
        sale_orders = self.env['sale.order.line'].search([
            ('product_id.product_tmpl_id', '=', self.id),
-           ('order_id.rental_status', '=', 'reserved')
+           ('order_id.status_rental', '=', 'reserved')
        ]).mapped('order_id')
        return {
            'name': 'Reserved Sale Orders',
@@ -26,5 +26,5 @@ class ProductTemplate(models.Model):
            'domain': [('id', 'in', sale_orders.ids)],
            'views': [(self.env.ref('rental.view_sale_order_reserved_tree').id, 'tree'),
                      (False, 'form')],
-           'context': {'default_rental_status': 'reserved'},
+           'context': {'default_status_rental': 'reserved'},
        }

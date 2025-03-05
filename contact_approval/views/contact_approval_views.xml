@@ -12,9 +12,9 @@
         <field name="arch" type="xml">
             <xpath expr="//sheet" position="before">
                 <header>
-                    <button name="action_approve" invisible="state in('approve', 'cancel')" string="Approve" type="object" class="btn btn-success mr-3"/>
-                    <button name="action_cancel" invisible="state in('approve', 'cancel')" string="Cancel" type="object" class="btn btn-danger ml-3"/>
-                    <button name="action_reset" invisible="state in('draft')" string="Reset" type="object" class="btn-secondary"/>
+                    <button name="action_approve" invisible="state in('approve', 'cancel')" string="Approve" type="object" class="btn btn-success mr-3" groups="contact_approval.ca_manager"/>
+                    <button name="action_cancel" invisible="state in('approve', 'cancel')" string="Cancel" type="object" class="btn btn-danger ml-3" groups="contact_approval.ca_manager"/>
+                    <button name="action_reset" invisible="state in('draft')" string="Reset" type="object" class="btn-secondary" groups="contact_approval.ca_manager"/>
                     <field name="state" widget="statusbar" options="{'clickable': False}" readonly="state in('approve', 'cancel')"/>
                 </header>
             </xpath>

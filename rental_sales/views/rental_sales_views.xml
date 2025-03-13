@@ -36,7 +36,7 @@
             <!-- menambahkan field tambahan -->
             <xpath expr="//field[@name='payment_term_id']" position="after">
                     <field name="rental_start_date" string="Rental Start"/>
-                    <field name="rental_re _date"  string="Rental End"/>
+                    <field name="rental_return_date"  string="Rental End"/>
                     <field name="duration_days" string="Duration" />
             </xpath>
         </field>

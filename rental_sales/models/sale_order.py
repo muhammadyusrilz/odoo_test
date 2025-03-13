@@ -1,4 +1,6 @@
 from odoo import models, fields, api
+from odoo.tools.populate import compute
+
 
 class SaleOrder(models.Model):
     _inherit = 'sale.order'
@@ -6,7 +8,7 @@ class SaleOrder(models.Model):
     is_rental_order = fields.Boolean()
     rental_start_date = fields.Datetime()
     rental_return_date = fields.Datetime()
-    duration_days = fields.Integer()
+    duration_days = fields.Integer(compute='_compute_duration_days')
     status_rental = fields.Selection(
         [
             ('draft', 'Draft'),
@@ -43,4 +45,4 @@ class SaleOrder(models.Model):
 
     def action_rental_returned(self):
         for rec in self:
-            rec.status_rental = 'draft'
+            rec.status_rental = 'returned'

@@ -1,5 +1,4 @@
 from odoo import models, fields, api
-from odoo.tools.populate import compute
 
 
 class SaleOrder(models.Model):
@@ -31,6 +30,15 @@ class SaleOrder(models.Model):
                 rec.duration_days = (return_date - start_date).days
             else:
                 rec.duration_days=0
+
+    def action_confirm(self):
+        result= super(SaleOrder,self).action_confirm()
+        today = fields.Datetime.now()
+        for rec in self:
+            if rec.rental_start_date and rec.rental_return_date:
+                if rec.rental_start_date <= today < rec.rental_return_date:
+                    rec.status_rental = "reserved"
+        return result
 
     def action_rental_confirm(self):
         today = fields.Datetime.now()

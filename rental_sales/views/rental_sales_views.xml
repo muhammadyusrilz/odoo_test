@@ -26,7 +26,7 @@
 
             <!-- menambahkan button di header -->
              <xpath expr="//header" position="inside">
-                <button name="action_rental_confirm" type="object" string="Confirm" class="btn-primary"/>
+<!--                <button name="action_rental_confirm" type="object" string="Confirm" class="btn-primary"/>-->
                 <button name="action_rental_reserved" type="object" string="Reserve" class="btn-primary" invisible="state != 'sale' or status_rental != 'draft'"/>
                 <button name="action_rental_returned" type="object" string="Turn In" class="btn-primary" invisible="status_rental in ('draft', 'reined', 'cancelled')"/>
                 <field name="status_rental" widget="statusbar" options="{'clickable': False}" />
